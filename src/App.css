@@ -1,0 +1,64 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+}
+
+/* Accessibility: Focus visible */
+*:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Skip to main content link */
+.skip-to-main {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-color);
+  color: white;
+  padding: var(--spacing-md);
+  text-decoration: none;
+  z-index: var(--z-tooltip);
+}
+
+.skip-to-main:focus {
+  top: 0;
+}
+
+/* Print styles */
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  *:focus-visible {
+    outline-width: 3px;
+  }
+
+  .btn {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
